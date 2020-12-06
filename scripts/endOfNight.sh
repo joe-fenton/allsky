@@ -74,3 +74,8 @@ if [[ $AUTO_DELETE == "true" ]]; then
 	  (($del > $(basename $i))) && rm -rf $i
 	done
 fi
+
+export HOME=/home/pi
+PATH=$PATH:/home/pi/.local/bin
+
+aws s3 sync /home/pi/allsky/images/$LAST_NIGHT/ s3://allsky-camera-data/$LAST_NIGHT/ --profile allsky
